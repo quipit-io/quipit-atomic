@@ -1,12 +1,17 @@
-import { JSX, Fragment } from "../../src.deps.ts";
-import { Action, ActionStyleTypes, ActionProps } from "../../atoms/_exports.tsx";
+import { Fragment, JSX } from "../../src.deps.ts";
+import {
+  Action,
+  ActionProps,
+  ActionStyleTypes,
+} from "../../atoms/_exports.tsx";
 import { ActionGroup } from "../../molecules/_exports.tsx";
+import { ComponentChildren } from "https://deno.land/x/fathym_atomic@v0.0.41-integration/src/src.deps.ts";
 
 export interface FeedCardProps {
   username: string;
   avatar: string;
   timestamp: string;
-  content: string;
+  children: ComponentChildren;
   image?: string;
   video?: string;
   actions?: ActionProps[] | JSX.Element;
@@ -28,22 +33,23 @@ export function FeedCard(props: FeedCardProps): JSX.Element {
           <span class="text-gray-500 text-sm">{props.timestamp}</span>
         </div>
       </div>
-      <div class="mt-4">
-        {props.content}
-      </div>
+      {props.children}
       {props.image && (
         <img src={props.image} class="mt-4 rounded-lg" alt="Post Image" />
       )}
       {props.video && (
         <video src={props.video} class="mt-4 rounded-lg" controls></video>
       )}
-      <div class="flex justify-between mt-4">
-        <ActionGroup>
+      <div class="flex justify-center align-middle mt-4">
+        <ActionGroup class="flex-grow flex justify-center align-middle">
           <>
             {!actions && props.actions}
             {actions &&
               actions.map((action, index) => (
-                <Action key={index} {...action} />
+                <Action
+                  key={index}
+                  {...action}
+                />
               ))}
           </>
         </ActionGroup>
