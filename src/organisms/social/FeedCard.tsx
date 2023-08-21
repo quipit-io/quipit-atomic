@@ -1,5 +1,5 @@
-import { JSX } from "../../src.deps.ts";
-import { Action, ActionStyleTypes } from "../../atoms/_exports.tsx";
+import { JSX, Fragment } from "../../src.deps.ts";
+import { Action, ActionStyleTypes, ActionProps } from "../../atoms/_exports.tsx";
 import { ActionGroup } from "../../molecules/_exports.tsx";
 
 export interface FeedCardProps {
@@ -9,9 +9,12 @@ export interface FeedCardProps {
   content: string;
   image?: string;
   video?: string;
+  actions?: ActionProps[] | JSX.Element;
 }
 
 export function FeedCard(props: FeedCardProps): JSX.Element {
+  const actions = Array.isArray(props.actions) ? props.actions : undefined;
+
   return (
     <div class="bg-white rounded-lg shadow-md p-4">
       <div class="flex items-center">
@@ -37,18 +40,11 @@ export function FeedCard(props: FeedCardProps): JSX.Element {
       <div class="flex justify-between mt-4">
         <ActionGroup>
           <>
-            <Action actionStyle={ActionStyleTypes.Link}>
-              Quipss
-            </Action>
-            <Action actionStyle={ActionStyleTypes.Link}>
-              Up/Down Voting
-            </Action>
-            <Action actionStyle={ActionStyleTypes.Link}>
-              Join Discussion
-            </Action>
-            <Action actionStyle={ActionStyleTypes.Link}>
-              Share/Repost
-            </Action>
+            {!actions && props.actions}
+            {actions &&
+              actions.map((action, index) => (
+                <Action key={index} {...action} />
+              ))}
           </>
         </ActionGroup>
       </div>
