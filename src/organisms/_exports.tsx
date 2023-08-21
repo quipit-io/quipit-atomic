@@ -14,3 +14,5 @@ export {
   type StepsFeaturesProps,
 } from "../src.deps.ts";
 export * from "./social/FeedCard.tsx";
+export * from "./social/PostForm.tsx";
+}
