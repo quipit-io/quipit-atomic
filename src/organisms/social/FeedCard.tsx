@@ -36,18 +36,20 @@ export function FeedCard(props: FeedCardProps): JSX.Element {
       )}
       <div class="flex justify-between mt-4">
         <ActionGroup>
-          <Action actionStyle={ActionStyleTypes.Link}>
-            Quips
-          </Action>
-          <Action actionStyle={ActionStyleTypes.Link}>
-            Up/Down Voting
-          </Action>
-          <Action actionStyle={ActionStyleTypes.Link}>
-            Join Discussion
-          </Action>
-          <Action actionStyle={ActionStyleTypes.Link}>
-            Share/Repost
-          </Action>
+          <>
+            <Action actionStyle={ActionStyleTypes.Link}>
+              Quipss
+            </Action>
+            <Action actionStyle={ActionStyleTypes.Link}>
+              Up/Down Voting
+            </Action>
+            <Action actionStyle={ActionStyleTypes.Link}>
+              Join Discussion
+            </Action>
+            <Action actionStyle={ActionStyleTypes.Link}>
+              Share/Repost
+            </Action>
+          </>
         </ActionGroup>
       </div>
     </div>
