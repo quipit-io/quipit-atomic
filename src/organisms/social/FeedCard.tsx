@@ -1,4 +1,4 @@
-import { Fragment, JSX } from "../../src.deps.ts";
+import { classSet, Fragment, JSX } from "../../src.deps.ts";
 import {
   Action,
   ActionProps,
@@ -7,21 +7,21 @@ import {
 import { ActionGroup } from "../../molecules/_exports.tsx";
 import { ComponentChildren } from "https://deno.land/x/fathym_atomic@v0.0.41-integration/src/src.deps.ts";
 
-export interface FeedCardProps {
+export interface FeedCardProps extends JSX.HTMLAttributes<HTMLDivElement> {
   username: string;
   avatar: string;
   timestamp: string;
   children: ComponentChildren;
   image?: string;
   video?: string;
-  actions?: ActionProps[] | JSX.Element;
+  actions?: ActionProps[] | ComponentChildren;
 }
 
 export function FeedCard(props: FeedCardProps): JSX.Element {
   const actions = Array.isArray(props.actions) ? props.actions : undefined;
 
   return (
-    <div class="bg-white rounded-lg shadow-md p-4">
+    <div class={classSet(props, "bg-white rounded-lg shadow-md p-4")}>
       <div class="flex items-center">
         <img
           src={props.avatar}
