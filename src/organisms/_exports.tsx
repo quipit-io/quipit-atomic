@@ -1,6 +1,8 @@
 export {
   Features,
   type FeaturesProps,
+  FeedCard,
+  type FeedCardProps,
   Footer,
   type FooterProps,
   Header,
@@ -12,6 +14,4 @@ export {
   type StepFeature,
   StepsFeatures,
   type StepsFeaturesProps,
-  FeedCard,
-  type FeedCardProps,
 } from "../src.deps.ts";
