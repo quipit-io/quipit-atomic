@@ -22,6 +22,14 @@ export function PostForm(props: PostFormProps): JSX.Element {
           placeholder="Write your post..."
         >
         </textarea>
+        <div class="flex justify-end">
+          <Action
+            type="submit"
+            class="bg-blue-500 text-white px-4 py-2 rounded-lg"
+          >
+            Post
+          </Action>
+        </div>
       </div>
     </form>
   );
