@@ -15,4 +15,3 @@ export {
 } from "../src.deps.ts";
 export * from "./social/FeedCard.tsx";
 export * from "./social/PostForm.tsx";
-}
